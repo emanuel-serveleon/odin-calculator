@@ -16,6 +16,7 @@ digitNodes.forEach ((digitNode) => digitNode.addEventListener("click", () => {
     number2 = currentInput;
   }
   console.log(`${number1} ${operator} ${number2}`);
+  displayNode.textContent = `${number1} ${operator} ${number2}`;
 }))
 
 const operatorNodes = document.querySelectorAll(".operator")
@@ -27,12 +28,14 @@ operatorNodes.forEach((operatorNode) => operatorNode.addEventListener("click", (
   }
   operator = operatorNode.textContent;
   console.log(`${number1} ${operator}`);
+  displayNode.textContent = `${number1} ${operator}`;
 }))
 
 const equalsNode = document.querySelector(".equals");
 
 equalsNode.addEventListener("click", () => {
   console.log(operate(number1, number2, operator));
+  displayNode.textContent = operate(number1, number2, operator);
 })
 
 const clearNode = document.querySelector(".clear");
@@ -45,7 +48,7 @@ clearNode.addEventListener("click", () => {
   currentInput = "";
 })
 
-function add(a, b) { return a + b };
+function add(a, b) { return +a + +b };
 function subtract(a, b) { return a - b };
 function multiply(a, b) { return a * b };
 function divide(a, b) { return a / b };
